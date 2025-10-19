@@ -1,0 +1,16 @@
+# Node and dependencies
+node_modules/
+vendor/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Uploads
+uploads/
+modulephotos/
+modulephotoshow/
+
+# Python env
+__pycache__/
+*.pyc

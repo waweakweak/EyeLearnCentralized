@@ -2,7 +2,11 @@
 FROM php:8.1-apache
 
 # Install PHP extensions
-RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable mysqli
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends libpq-dev \
+    && docker-php-ext-install mysqli pdo pdo_mysql pdo_pgsql \
+    && docker-php-ext-enable mysqli \
+    && rm -rf /var/lib/apt/lists/*
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite

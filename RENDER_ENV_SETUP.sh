@@ -58,3 +58,18 @@ export GEMINI_API_KEY="your_api_key_here"
 #
 # Check logs on Render:
 #   → Dashboard → Logs tab → Look for connection errors
+
+# --------------------------------------------
+# NOTE: Using PostgreSQL on Render
+# --------------------------------------------
+# If you keep `DB_CONNECTION=pgsql` and use Render's PostgreSQL instance,
+# the runtime PHP container must have the `pdo_pgsql` extension available.
+# The repository includes a `Dockerfile` that installs `libpq-dev` and
+# enables `pdo_pgsql`. To use that Dockerfile on Render:
+# 1. In Render Dashboard → Service → Settings → Build & Deploy
+# 2. Choose "Use Dockerfile" or set the service to a Docker build
+# 3. Deploy; the Dockerfile will produce an image with `pdo_pgsql`
+#
+# If you prefer not to use Docker, you can set `DB_CONNECTION=mysql`
+# and use Render's default PHP runtime (which includes `pdo_mysql`).
+# However, PostgreSQL-specific SQL/features may not be compatible with MySQL.
